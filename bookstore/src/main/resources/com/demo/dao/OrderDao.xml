@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.OrderDao">
+
+    <resultMap id="orderWithBook" type="com.qf.entity.Order">
+        <id property="id" column="id"/>
+        <association property="book" javaType="com.qf.entity.Book">
+            <id property="id" column="bid"/>
+        </association>
+    </resultMap>
+
+    <select id="queryCount" resultType="int">
+    select count(1) from `order` where bookid=#{bookid} and cusid=#{cusid}
+    </select>
+
+    <update id="updateOrder">
+        update `order` set num=num+1
+    </update>
+
+    <insert id="addOrder">
+        insert into `order`(num,cusid,bookid) values(1,#{cusid},#{bookid})
+    </insert>
+
+    <select id="findAll" resultMap="orderWithBook">
+        select
+		o.*,
+        book.id bid,
+        book.path,
+        book.bookname,
+        book.author,
+        book.price
+        from `order` o
+        left join book on o.bookid=book.id
+        where cusid=#{cusid}
+    </select>
+
+    <delete id="orderDel">
+        delete from `order` where id=#{id}
+    </delete>
+
+    <select id="queryCountById" resultType="int">
+        select `order`.num from `order` where id=#{id}
+    </select>
+
+    <update id="remove">
+        update `order` set num=num-1 where id=#{id}
+    </update>
+
+    <delete id="delById">
+        delete from `order` where id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<body>
+<center >
+    <div style="position: relative; top: 1px;" >
+        <h1 th:text="'欢迎'+${session.user.name}+'光临本书店'">欢迎</h1>
+        <h5><a href="/user/logout">退出登录</a></h5>
+        <h3>图书列表</h3>
+        <h3><a href="/book/list">浏览所有图书</a></h3>
+        <h4><a th:each="class:${classList}" th:href="@{/book/list(classid=${class.id})}" th:text="'&nbsp;'+${class.name}+'&nbsp;'"></a>
+        &nbsp;<a th:href="@{'/order/findAll?cusid='+ ${session.user.id}}">查看购物车</a>
+        </h4>
+    </div>
+    <div>
+            <table border="2px" rules=cols>
+
+                <tr>
+                    <td th:each="book:${page.list}"><img th:src="${book.path}" height="150px" width="150px"></td>
+                </tr>
+                <tr>
+                    <td th:each="book:${page.list}">书名：<font th:text="${book.bookname}"></font></td>
+                </tr>
+                <tr>
+                    <td th:each="book:${page.list}">作者：<font th:text="${book.author}"></font></td>
+                </tr>
+                <tr>
+                    <td th:each="book:${page.list}">价格：<font th:text="${book.price}"></font></td>
+                </tr>
+                <tr>
+                    <td th:each="book:${page.list}"><a href="#" th:onclick="add([[${book.id}]],[[${session.user.id}]])">加入购物车</a></td>
+                </tr>
+
+            </table>
+            <div style="position: relative; margin: 11px;">
+                <ul >
+
+                    <!-- 首页 -->
+                    <li>
+                        <a href="/book/list?page=1">首页</a>
+                    </li>
+
+                    <!-- 上一页 -->
+                    <li th:if="${page.hasPreviousPage}!=false">
+                        <a th:href="@{'/book/list?page=' + ${page.pageNum-1}}" th:text="上一页"></a>
+                    </li>
+
+                    <!-- 中间页 -->
+                    <li th:each="pageNum:${page.navigatepageNums}">
+                        <a th:href="@{'/book/list?page=' + ${pageNum}}" th:text="${pageNum}" th:if="${pageNum ne page.pageNum}"></a>
+                        <a th:href="@{'/book/list?page='+${pageNum}}" th:text="${pageNum}" th:if="${pageNum eq page.pageNum}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+                    </li>
+
+                    <!-- 下一页 -->
+                    <li th:if="${page.hasNextPage}!=false">
+                        <a th:href="@{'/book/list?page=' + ${page.pageNum+1}}" th:text="下一页"></a>
+                    </li>
+
+                    <!-- 尾页 -->
+                    <li>
+                        <a th:href="@{'/book/list?page=' + ${page.navigateLastPage}}">尾页</a>
+                    </li>
+
+                </ul>
+            </div>
+    </div>
+</center>
+</body>
+<style type="text/css">
+    li{
+        display:inline
+    }
+</style>
+<script type="text/javascript">
+    function add(bookid, cusid) {
+        //此处需要调用ajax
+        var params = {
+            "bookid": bookid,
+            "cusid": cusid
+        };
+        $.post("/order/add", params, function (data) {
+            if (data == 'success') {
+                alert('添加成功,可在购物车查看');
+                //请用js删除掉那条记录
+            } else {
+                alert('处理结果,操作失败');
+            }
+        });
+    }
+
+</script>
+</html>

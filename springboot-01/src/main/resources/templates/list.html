@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1 th:text="${hello}">h1标签</h1>
+
+    <hr color="red">
+
+    <!--  用什么就在前面加th：  -->
+    <div th:if="${users != null}">
+        <table border="1" width="1000">
+            <caption>学生信息表</caption>
+            <tr>
+                <th>序号</th>
+                <th>id</th>
+                <th>姓名</th>
+                <th>生日</th>
+                <th>性别</th>
+                <th>地址</th>
+                <th>操作</th>
+            </tr>
+
+            <!-- 如果有多个的话就用 , 隔开 -->
+            <tr th:each="user:${users}">
+                <!-- 序号按照顺序递增，count从1开始，index从0开始 -->
+                <td th:text="${userStat.count}"></td>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${#dates.format(user.birthday , 'yyyy-MM-dd')}"></td>
+                <td th:text="${user.sex}"></td>
+                <td th:text="${user.address}"></td>
+                <td><a th:href="@{/user/findById(uid=${user.id})}">update</a></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

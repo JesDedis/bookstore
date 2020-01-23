@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:Object="${user}" action="">
+        <input type="hidden" th:id="*{id}" th:value="*{id}" name="id">
+        用户名：<input type="text" th:value="*{username}" name="username"><br><br>
+        生日：<input type="text" th:value="*{birthday}"><br><br>
+        性别：<input type="text" th:value="*{sex}"><br><br>
+        地址：<input type="text" th:value="*{address}"><br><br>
+    </form>
+
+</body>
+</html>

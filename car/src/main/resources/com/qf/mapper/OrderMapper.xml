@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.OrderMapper">
+
+    <select id="getAllOrder" resultType="com.qf.entity.Order">
+        select
+            o.id,
+            o.oprice,
+            car.name cid,
+            city1.name getid,
+            city2.name backid,
+            o.status
+        from
+            sys_order o
+        LEFT JOIN sys_car car on o.cid=car.id
+        LEFT JOIN sys_city city1 ON o.getid=city1.id
+        LEFT JOIN sys_city city2 ON o.backid=city2.id
+        where uid = #{uid};
+    </select>
+
+
+
+</mapper>

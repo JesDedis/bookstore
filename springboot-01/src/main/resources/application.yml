@@ -1,0 +1,28 @@
+mybatis:
+  type-aliases-package: com.qf.entity
+  mapper-locations: classpath:mapper/*.xml
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/question?serverTimezone=Asia/Shanghai
+    username: root
+    #这里密码应该加上单引号
+    password: '0000'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  freemarker:
+    cache: false
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    charset: UTF-8
+    content-type: text/html
+
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    servlet:
+      content-type: text/html

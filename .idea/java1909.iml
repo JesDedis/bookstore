@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring" removed="false">
+          <file>file://$MODULE_DIR$/WEB_CAR2/src/main/resources/spring.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/src/main/resources/spring1.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/spring-bean.xml</file>
+        </fileset>
+        <fileset id="fileset2" name="Springmvc" removed="false">
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/springmvc.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/spring-bean.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT/WEB-INF/classes/spring-bean.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/classes/spring-bean.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/classes/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT/WEB-INF/classes/spring-dao.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT/WEB-INF/classes/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/src/main/resources/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/classes/spring-service.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/src/main/resources/spring.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/target/classes/spring.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/target/WEB_CAR2-1.0-SNAPSHOT/WEB-INF/classes/spring.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/target/WEB_CAR2-1.0-SNAPSHOT/WEB-INF/classes/spring1.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/target/classes/spring1.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR2/src/main/resources/spring1.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/classes/springmvc.xml</file>
+          <file>file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT/WEB-INF/classes/springmvc.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WEB_CAR/target/carsys-0.0.1-SNAPSHOT" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web2">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB_CAR/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WEB_CAR/src/main/webapp" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web3">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB_CAR2/target/WEB_CAR2-1.0-SNAPSHOT/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WEB_CAR2/target/WEB_CAR2-1.0-SNAPSHOT" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+    <facet type="web" name="Web4">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/WEB_CAR2/src/main/webapp/WEB-INF/web.xml" />
+        </descriptors>
+        <webroots>
+          <root url="file://$MODULE_DIR$/WEB_CAR2/src/main/webapp" relative="/" />
+        </webroots>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

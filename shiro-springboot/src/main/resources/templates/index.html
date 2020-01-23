@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:shiro="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    index主页面
+
+    <hr color="red">
+
+    <a href="/user/add">添加</a> <br><br>
+    <a href="/user/delete" shiro:hasPermission="user:delete">删除</a> <br><br>
+    <a href="/user/update" shiro:hasPermission="user:update">修改</a> <br><br>
+    <a href="/user/query" shiro:hasPermission="user:query">查询</a> <br><br>
+
+    <hr color="red">
+
+    <a href="/user/loginout">退出</a> <br><br>
+
+</body>
+</html>

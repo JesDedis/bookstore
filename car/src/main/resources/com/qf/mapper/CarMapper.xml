@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.CarMapper">
+
+    <select id="queryAllByRent" resultType="com.qf.entity.Car">
+        select * from sys_car order by price desc;
+    </select>
+
+    <select id="queryAllByNum" resultType="com.qf.entity.Car">
+        select * from sys_car order by number desc;
+    </select>
+
+    <select id="findCarByGetId" resultType="com.qf.entity.Car">
+        select * from sys_car where id = #{id};
+    </select>
+
+</mapper>

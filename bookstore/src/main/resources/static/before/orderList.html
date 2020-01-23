@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script>
+    function delOrderById(obj,id, name) {
+        //此处需要调用ajax
+        var params = {
+            "id": id
+        };
+        $.post("/order/orderDel", params, function (data) {
+            if (data == 'success') {
+                alert('处理结果,删除成功');
+                //请用js删除掉那条记录
+                $(obj).parent().parent().remove();
+            } else {
+                alert('处理结果,操作失败');
+            }
+        });
+    }
+
+    function selectAll(obj) {
+        //dom  jquery
+        var value = obj.checked;
+        //alert(value);
+        var arr = document.getElementsByName("ids");
+        for (var i = 0; i < arr.length; i++) {
+            arr[i].checked = value;
+        }
+        if (value) {
+            deleteNum = arr.length;
+        } else {
+            deleteNum = 0;
+        }
+
+        $("#delNum").text(deleteNum);
+
+    }
+
+    function selectOne(obj) {
+        if (obj.checked) {
+            deleteNum += 1;
+        } else {
+            deleteNum -= 1;
+        }
+
+        if (deleteNum == 0) {
+            document.getElementById("checkAllId").checked = false;
+        }
+
+        var arr = document.getElementsByName("ids");
+        if (deleteNum == arr.length) {
+            document.getElementById("checkAllId").checked = true;
+        }
+
+        $("#delNum").text(deleteNum);
+    }
+</script>
+<body>
+<center >
+    <div style="position: relative; top: 1px;" >
+        <h1 th:text="${session.user.name}+'的购物车'">欢迎</h1>
+        <h4><a href="/book/list">返回继续浏览</a>
+        </h4>
+    </div>
+    <div>
+        <form action="/order/delAll" method="post">
+            <table border="1px" >
+                <thead>
+                <tr>
+                    <th style="width:3%"><input type="checkbox" onclick="selectAll(this)"
+                                                id="checkAllId"/></th>
+                    <th style="width:5%">序号</th>
+                    <th>封面</th>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>单价</th>
+                    <th>数量</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order:${orderList}">
+                    <td><input type="checkbox" name="ids" th:value="${order.id}"
+                               onclick="selectOne(this)"/></td>
+                    <td th:text="${orderStat.count}"></td>
+                    <td><img th:src="${order.book.path}" height="100px" width="80px"></td>
+                    <td th:text="${order.book.bookname}" ></td>
+                    <td th:text="${order.book.author}"></td>
+                    <td th:text="${order.book.price}"></td>
+                    <td th:text="${order.num}"></td>
+
+                    <td><a href="#" th:onclick="delOrderById(this,[[${order.id}]],[[${order.book.bookname}]])">-1/删除</a></td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <input type="submit" value="立即购买">
+            </div>
+        </form>
+    </div>
+</center>
+</body>
+</html>
